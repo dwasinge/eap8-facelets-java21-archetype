@@ -1,0 +1,1 @@
+# eap8-facelets-java21-archetype
