@@ -1,0 +1,10 @@
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: com.example.SplitTableNameAndSchema
+displayName: Find and replace @Table(name="schema.tablename") with @Table(name="tablename",schema="schema")
+recipeList:
+  - org.openrewrite.text.FindAndReplace:
+      find: '(\s*)@Table\(\s*name\s*=\s*\"(.+)\.(.+)\"\)'
+      replace: '$1@Table\(name=\"$3\", schema=\"$2\"\)'
+      filePattern: '**/*.java'
+      regex: true

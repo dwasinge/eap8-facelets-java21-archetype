@@ -1,0 +1,10 @@
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: com.example.CorrectPersistenceXmlHibernateDialect
+displayName: Set the Hibernate Dialect for Oracle
+recipeList:
+  - org.openrewrite.text.FindAndReplace:
+      find: 'org.hibernate.dialect.Oracle.*Dialect'
+      replace: '"org.hibernate.dialect.OracleDialect'
+      filePattern: '**/persistence.xml'
+      regex: true

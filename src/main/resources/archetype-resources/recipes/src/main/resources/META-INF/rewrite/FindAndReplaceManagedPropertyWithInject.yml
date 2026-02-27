@@ -1,0 +1,15 @@
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: com.example.FindAndReplaceManagedPropertyWithInject
+displayName: Find and replace @ManagedProperty with @Inject
+recipeList:
+  - org.openrewrite.text.FindAndReplace:
+      find: '@ManagedProperty(.*)'
+      replace: '@Inject'
+      filePattern: '**/*.java'
+      regex: true
+  - org.openrewrite.text.FindAndReplace:
+      find: '(import .*;\s+)+(import .*;)'
+      replace: '$1 import jakarta.inject.Inject;'
+      filePattern: '**/*.java'
+      regex: true

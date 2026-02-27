@@ -18,13 +18,11 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>21</maven.compiler.source>
-    <maven.compiler.target>21</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
   <dependencies>
-
-    <!-- TODO:  Add other required dependencies -->
 
     <dependency>
       <groupId>${groupId}</groupId>
@@ -33,34 +31,28 @@
       <scope>provided</scope>
     </dependency>
 
-    <!-- Import the CDI API, we use provided scope as the API is included in JBoss EAP -->
+    <!-- TODO:  Add other required dependencies after initial migration
     <dependency>
       <groupId>jakarta.enterprise</groupId>
       <artifactId>jakarta.enterprise.cdi-api</artifactId>
       <scope>provided</scope>
     </dependency>
-
-    <!-- Import the Common Annotations API (JSR-250), we use provided scope
-      as the API is included in JBoss EAP -->
     <dependency>
       <groupId>jakarta.annotation</groupId>
       <artifactId>jakarta.annotation-api</artifactId>
       <scope>provided</scope>
     </dependency>
-
-    <!-- Import the JSF API, we use provided scope as the API is included in JBoss EAP -->
     <dependency>
       <groupId>jakarta.faces</groupId>
       <artifactId>jakarta.faces-api</artifactId>
       <scope>provided</scope>
     </dependency>
-
     <dependency>
       <groupId>org.primefaces</groupId>
       <artifactId>primefaces</artifactId>
       <version>15.0.0</version>
       <classifier>jakarta</classifier>
-    </dependency>
+    </dependency> -->
 
   </dependencies>
 

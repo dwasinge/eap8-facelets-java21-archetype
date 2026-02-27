@@ -4,7 +4,6 @@
 
 ### EAR Project Properties
 
-- appContextRoot
 - persistenceUnitName
 - jtaDatasourceName
 
@@ -22,9 +21,8 @@ mvn archetype:generate \
     -DgroupId=com.example \
     -DartifactId=my-app \
     -Dversion=1.0.0-SNAPSHOT \
-    -DappContextRoot=<application-context-root> \
     -DpersistenceUnitName=<persistence-unit-name> \
     -DapplicationDisplayName=<application-display-name> \
-    -DjtaDatasourceName=<eap-configured-datasource-name>
+    -DjtaDatasourceName=<eap-configured-datasource-name> \
     -DinteractiveMode=false
 ```
