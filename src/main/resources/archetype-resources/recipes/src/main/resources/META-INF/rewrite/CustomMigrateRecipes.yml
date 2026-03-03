@@ -9,5 +9,8 @@ recipeList:
   - com.example.CorrectPersistenceXmlHibernateDialect
   - com.example.MakeNamedBeanSerializable
   - com.example.SplitTableNameAndSchema
+  - FindAndReplaceLoginBeanReformat
+  - FindAndReplaceModuleUtilityFaces
+  - FindAndReplaceWelcomeCacLogin
   - org.openrewrite.java.OrderImports:
       removeUnused: true
