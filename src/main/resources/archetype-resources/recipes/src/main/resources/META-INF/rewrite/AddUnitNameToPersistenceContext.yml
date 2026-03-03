@@ -1,0 +1,10 @@
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: com.example.AddUnitNameToPersistenceContext
+displayName: Adds unitName property to @PersistenceContext
+recipeList:
+  - org.openrewrite.text.FindAndReplace:
+      find: '(@PersistenceContext)'
+      replace: '$1(unitName="${persistenceUnitName}")'
+      filePattern: '**/*.java'
+      regex: true

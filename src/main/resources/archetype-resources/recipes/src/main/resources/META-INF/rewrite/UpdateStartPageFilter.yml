@@ -1,0 +1,35 @@
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: com.example.UpdateStartPageFilter
+displayName: Inject UserBean and Remove HttpSession References
+recipeList:
+    # Add import for inject
+  - org.openrewrite.text.FindAndReplace:
+      find: '(import .*;\s*)+(import .*;)'
+      replace: '$1import jakarta.inject.Inject;'
+      filePattern: '**/StartPageFilter.java'
+      regex: true
+    # Inject UserBean
+  - org.openrewrite.text.FindAndReplace:
+      find: '^(.*;)(\n)(.+)(\s*public\s+StartPageFilter\(\)\s+\{)$'
+      replace: '$1$2  @Inject$2  UserBean userBean;$2  $4'
+      filePattern: '**/StartPageFilter.java'
+      regex: true
+      multiline: true
+      dotAll: true
+    # Remove UserBean and HttpSession instantiation
+  - org.openrewrite.text.FindAndReplace:
+      find: '^\s*HttpSession .*session.getAttribute\(UserBean.FACES_KEY\);'
+      replace: ''
+      filePattern: '**/StartPageFilter.java'
+      regex: true
+      multiline: true
+      dotAll: true
+  - org.openrewrite.text.FindAndReplace:
+      find: '^\s*Object\s+object.*.removeAttribute\(NavigationBean.FACES_KEY\);\n\s+\}'
+      replace: ''
+      filePattern: '**/StartPageFilter.java'
+      regex: true
+      multiline: true
+      dotAll: true
+

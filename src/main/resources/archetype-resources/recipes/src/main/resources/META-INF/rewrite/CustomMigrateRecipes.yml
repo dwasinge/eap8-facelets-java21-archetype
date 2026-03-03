@@ -9,5 +9,7 @@ recipeList:
   - com.example.CorrectPersistenceXmlHibernateDialect
   - com.example.MakeNamedBeanSerializable
   - com.example.SplitTableNameAndSchema
+  - com.example.UpdateStartPageFilter
+  - com.example.AddUnitNameToPersistenceContext
   - org.openrewrite.java.OrderImports:
       removeUnused: true

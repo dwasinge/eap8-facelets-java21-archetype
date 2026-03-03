@@ -12,14 +12,30 @@
     <requiredProperty key="persistenceUnitName">
       <defaultValue>myPUName</defaultValue>
     </requiredProperty>
-    <requiredProperty key="appDisplayName">
-      <defaultValue>MyApp</defaultValue>
-    </requiredProperty>
     <requiredProperty key="jtaDatasourceName">
       <defaultValue>ExampleDS</defaultValue>
     </requiredProperty>
+    <requiredProperty key="appKey">
+      <defaultValue>CHANGEME</defaultValue>
+    </requiredProperty>
     
   </requiredProperties>
+
+  <fileSets>
+    <fileSet filtered="true" packaged="false" encoding="UTF-8" >
+      <directory>scripts</directory>
+      <includes>
+        <include>**/*.ps1</include>
+        <include>**/*.md</include>
+      </includes>
+    </fileSet>
+    <fileSet filtered="false" packaged="false">
+      <directory></directory>
+      <includes>
+        <include>README.md</include>
+      </includes>
+    </fileSet>
+  </fileSets>
 
   <modules>
     <module id="recipes" dir="recipes" name="recipes">
@@ -89,6 +105,7 @@
           <directory>src/main/java</directory>
           <includes>
             <include>**/*.java</include>
+            <include>**/*.new</include>
           </includes>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">
