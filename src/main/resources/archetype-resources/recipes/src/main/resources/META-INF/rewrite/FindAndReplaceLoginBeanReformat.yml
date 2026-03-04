@@ -1,0 +1,48 @@
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: com.example.FindAndReplaceLoginBeanReformat
+displayName: Find and replace cacLogin with localCacLogin
+recipeList:
+# replace jsp with xhtml
+  - org.openrewrite.text.FindAndReplace:
+      find: 'start\.jsp'
+      replace: 'start\.xhtml'
+      filePattern: '**/LoginBean.java'
+      regex: true
+# replace static strings (3) with correct values for cetars util cac login
+  - org.openrewrite.text.FindAndReplace:
+      find: 'private boolean invalidLogin.*;'
+      replace: 'public static final String FACES_KEY = "loginBean";'
+      filePattern: '**/LoginBean.java'
+      regex: true
+  - org.openrewrite.text.FindAndReplace:
+      find: 'private boolean multipleLogins.*;'
+      replace: 'private static final String LOGIN_VALID = "loginSuccessful";'
+      filePattern: '**/LoginBean.java'
+      regex: true
+# TODO: manually add correct app_key value below
+  - org.openrewrite.text.FindAndReplace:
+      find: 'private String errorMessage;'
+      replace: 'private static final String APP_KEY = "KEY_TO_REPLACE";'
+      filePattern: '**/LoginBean.java'
+      regex: true
+# adds cetarsLoginBean
+  - org.openrewrite.text.FindAndReplace:
+      find: '(import .*;\s+)+(import .*;)'
+      replace: '$1 import mil.navy.cetars.cetarsUtil.ejb.CetarsLoginBean;'
+      filePattern: '**/LoginBean.java'
+      regex: true
+# class extends cetarsLoginBean
+  - org.openrewrite.text.FindAndReplace:
+      find: 'public\s+class\s+\w+)\s+\{\s*$'
+      replace: '$1  extends CetarsLoginBean {'
+      filePattern: '**/LoginBean.java'
+      regex: true
+
+## TODO: automate or easier to add manually?
+#   public void localCacLogin() {
+#  	  cacLogin(APP_KEY);
+# 	  if(!isInvalidLogin()) {
+#		    redirectToStartPage();
+#  	  }
+#   }

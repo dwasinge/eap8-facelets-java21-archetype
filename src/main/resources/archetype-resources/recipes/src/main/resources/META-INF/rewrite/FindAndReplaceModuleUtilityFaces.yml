@@ -1,0 +1,10 @@
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: com.example.FindAndReplaceModuleUtilityFaces
+displayName: Find and replace .faces with .xhtml in moduleUtility.java
+recipeList:
+  - org.openrewrite.text.FindAndReplace:
+      find: '\.faces'
+      replace: '\.xhtml'
+      filePattern: '**/ModuleUtility.java'
+      regex: true

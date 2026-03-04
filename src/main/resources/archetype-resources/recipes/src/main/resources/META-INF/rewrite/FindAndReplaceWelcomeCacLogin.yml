@@ -1,0 +1,10 @@
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: com.example.FindAndReplaceWelcomeCacLogin
+displayName: Find and replace cacLogin with localCacLogin
+recipeList:
+  - org.openrewrite.text.FindAndReplace:
+      find: '\.cacLogin'
+      replace: '\.localCacLogin'
+      filePattern: '**/welcome.xhtml'
+      regex: true
