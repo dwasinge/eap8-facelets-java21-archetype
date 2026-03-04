@@ -12,5 +12,7 @@ recipeList:
   - FindAndReplaceLoginBeanReformat
   - FindAndReplaceModuleUtilityFaces
   - FindAndReplaceWelcomeCacLogin
+  - com.example.UpdateStartPageFilter
+  - com.example.AddUnitNameToPersistenceContext
   - org.openrewrite.java.OrderImports:
       removeUnused: true
