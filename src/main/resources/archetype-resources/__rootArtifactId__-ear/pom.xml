@@ -68,12 +68,12 @@
           </modules>
         </configuration>
       </plugin>
+      <!--- Uncomment when ready to deploy to local EAP 8 instance.
       <plugin>
         <groupId>org.wildfly.plugins</groupId>
         <artifactId>wildfly-maven-plugin</artifactId>
-        <version>5.0.0.Final</version> <!-- Use the latest version -->
+        <version>5.0.0.Final</version>
         <executions>
-          <!-- Undeploy the application on clean -->
           <execution>
             <id>undeploy</id>
             <phase>clean</phase>
@@ -84,7 +84,6 @@
               <ignoreMissingDeployment>true</ignoreMissingDeployment>
             </configuration>
           </execution>
-          <!-- Deploy the application on install -->
           <execution>
             <id>deploy</id>
             <phase>install</phase>
@@ -93,7 +92,7 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
+      </plugin> -->
     </plugins>
   </build>
 
