@@ -16,43 +16,58 @@
   <version>${version}</version>
   <packaging>ejb</packaging>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>21</maven.compiler.source>
-    <maven.compiler.target>21</maven.compiler.target>
-  </properties>
-
+  <!-- TODO: Configure EJB Dependencies after initial migration
   <dependencies>
 
-    <!-- TODO: Import other required dependencies -->
-
-    <!-- Import the CDI API, we use provided scope as the API is included in JBoss EAP -->
     <dependency>
       <groupId>jakarta.enterprise</groupId>
       <artifactId>jakarta.enterprise.cdi-api</artifactId>
       <scope>provided</scope>
     </dependency>
-
-    <!-- Import the Common Annotations API (JSR-250), we use provided scope
-  as the API is included in JBoss EAP -->
     <dependency>
       <groupId>jakarta.annotation</groupId>
       <artifactId>jakarta.annotation-api</artifactId>
       <scope>provided</scope>
     </dependency>
-    <!-- Import the EJB API, we use provided scope as the API is included in JBoss EAP -->
     <dependency>
       <groupId>jakarta.ejb</groupId>
       <artifactId>jakarta.ejb-api</artifactId>
       <scope>provided</scope>
     </dependency>
-
     <dependency>
       <groupId>jakarta.persistence</groupId>
       <artifactId>jakarta.persistence-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate.orm</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.logging</groupId>
+      <artifactId>jboss-logging</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.validation</groupId>
+      <artifactId>jakarta.validation-api</artifactId>
+      <scope>provided</scope>
     </dependency>
 
-  </dependencies>
+    <dependency>
+      <groupId>mil.navy.cetars</groupId>
+      <artifactId>CETARS_LOGIN_UTL</artifactId>
+      <type>ejb</type>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.oracle.database.jdbc</groupId>
+      <artifactId>ojdbc11</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+  </dependencies> -->
 
   <build>
     <plugins>
@@ -61,7 +76,7 @@
         <artifactId>maven-ejb-plugin</artifactId>
         <version>3.3.0</version>
         <configuration>
-          <ejbVersion>3.2</ejbVersion>
+          <ejbVersion>4.0</ejbVersion>
         </configuration>
       </plugin>
     </plugins>

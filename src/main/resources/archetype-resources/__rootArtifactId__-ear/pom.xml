@@ -16,12 +16,6 @@
   <version>${version}</version>
   <packaging>ear</packaging>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>21</maven.compiler.source>
-    <maven.compiler.target>21</maven.compiler.target>
-  </properties>
-
   <dependencies>
 
     <!-- EJB -->
@@ -40,8 +34,12 @@
       <type>war</type>
     </dependency>
 
-    <!-- TODO: Add Utility JARS -->
-
+    <!-- TODO: Add Utility JAR after initial migration
+    <dependency>
+      <groupId>mil.navy.cetars</groupId>
+      <artifactId>CETARS_LOGIN_UTIL</artifactId>
+    </dependency> -->
+    
   </dependencies>
 
   <build>
@@ -51,25 +49,31 @@
         <artifactId>maven-ear-plugin</artifactId>
         <version>3.4.0</version>
         <configuration>
-          <!-- Register the WAR -->
-          <webModule>
-            <groupId>${groupId}</groupId>
-            <artifactId>${rootArtifactId}-web</artifactId>
-          </webModule>
-          <!-- Register the JAR as an EJB module -->
-          <ejbModule>
-            <groupId>${groupId}</groupId>
-            <artifactId>${rootArtifactId}-ejb</artifactId>
-          </ejbModule>
-          <!-- TODO:  register utility EJB JARs -->
+          <modules>
+            <!-- Register the WAR -->
+            <webModule>
+              <groupId>${groupId}</groupId>
+              <artifactId>${rootArtifactId}-web</artifactId>
+            </webModule>
+            <!-- Register the JAR as an EJB module -->
+            <ejbModule>
+              <groupId>${groupId}</groupId>
+              <artifactId>${rootArtifactId}-ejb</artifactId>
+            </ejbModule>
+            <!-- TODO:  register utility EJB JAR after initial migration
+            <ejbModule>
+              <groupId>mil.navy.cetars</groupId>
+              <artifactId>CETARS_LOGIN_UTIL</artifactId>
+            </ejbModule>  -->
+          </modules>
         </configuration>
       </plugin>
+      <!--- Uncomment when ready to deploy to local EAP 8 instance.
       <plugin>
         <groupId>org.wildfly.plugins</groupId>
         <artifactId>wildfly-maven-plugin</artifactId>
-        <version>5.0.0.Final</version> <!-- Use the latest version -->
+        <version>5.0.0.Final</version>
         <executions>
-          <!-- Undeploy the application on clean -->
           <execution>
             <id>undeploy</id>
             <phase>clean</phase>
@@ -80,7 +84,6 @@
               <ignoreMissingDeployment>true</ignoreMissingDeployment>
             </configuration>
           </execution>
-          <!-- Deploy the application on install -->
           <execution>
             <id>deploy</id>
             <phase>install</phase>
@@ -89,7 +92,7 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
+      </plugin> -->
     </plugins>
   </build>
 

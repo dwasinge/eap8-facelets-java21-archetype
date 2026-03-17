@@ -1,0 +1,19 @@
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: com.example.MakeNamedBeanSerializable
+displayName: Add Serializable to classes with @Named annotation
+recipeList:
+  # TODO: This doesn't handle if implements already exists or if extends is used
+  - org.openrewrite.text.FindAndReplace:
+      find: '^(@Named.*public\s+class\s+\w+)\s+\{\s*$'
+      replace: '$1 implements Serializable {'
+      filePattern: '**/*.java'
+      regex: true
+      multiline: true
+      dotAll: true
+  - org.openrewrite.text.FindAndReplace:
+      find: '(import .*;\s+)+(import .*;)'
+      replace: '$1 import java.io.Serializable;'
+      filePattern: '**/*.java'
+      regex: true
+  - org.openrewrite.staticanalysis.AddSerialVersionUidToSerializable
